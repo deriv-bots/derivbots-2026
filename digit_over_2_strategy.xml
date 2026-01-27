@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<bot>
+  <description>Digit Over 2 - Entry after 3 ticks under 2, compound 3 times, 10x martingale on loss.</description>
+  <trade>
+    <symbol>R_100</symbol>
+    <tradeType>DIGITOVER</tradeType>
+    <barrier>2</barrier>
+    <duration>1</duration>
+    <duration_unit>t</duration_unit>
+  </trade>
+  <stakeLogic>
+    <initialStake>1.00</initialStake>
+    <compoundTimes>3</compoundTimes>
+    <martingaleMultiplier>10</martingaleMultiplier>
+  </stakeLogic>
+  <entryCondition>
+    <type>lastDigitsUnder</type>
+    <count>3</count>
+    <value>2</value>
+  </entryCondition>
+</bot>

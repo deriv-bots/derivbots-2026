@@ -1,0 +1,1803 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" is_dbot="true" collection="false">
+  <variables>
+    <variable type="" id="/shM51Nl|.I_R[9=PPJd" islocal="false" iscloud="false">dalembert:resultIsWin</variable>
+    <variable type="" id="8-FGM6FF)6Y!:[]L7ZW0" islocal="false" iscloud="false">dalembert:profit</variable>
+    <variable type="" id="dO,2jA#,W(l+~Rs7@l[|" islocal="false" iscloud="false">stake</variable>
+    <variable type="" id="J3g++(PvQv/)qGUt#G2:" islocal="false" iscloud="false">trader</variable>
+    <variable type="" id="weOIq50C[S,Wr;`!|gYR" islocal="false" iscloud="false">dalembert:totalProfit</variable>
+    <variable type="" id="[w@pzvBAlteju[8,x#hD" islocal="false" iscloud="false">dalembert:tradeAgain</variable>
+    <variable type="" id="C1sj}QRP*^Ngjgv+U:yR" islocal="false" iscloud="false">stake win</variable>
+    <variable type="" id="ZGpA`4foih2T_0.]xE66" islocal="false" iscloud="false">dalembert:expectedProfit</variable>
+    <variable type="" id="o((rBg*rL/qm;RU%PM7_" islocal="false" iscloud="false">dalembert:size</variable>
+    <variable type="" id="-PgUuax5KQf1zn42iCd~" islocal="false" iscloud="false">dalembert:amount</variable>
+    <variable type="" id="R2yOKK{FmV|TULnU8.,[" islocal="false" iscloud="false">dalembert:profitUnits</variable>
+    <variable type="" id="@nr#0%ma@V~6H5D#nWB[" islocal="false" iscloud="false">martingale</variable>
+    <variable type="" id="%o8CQE,uNdg`rmRL:-ca" islocal="false" iscloud="false">dalembert:maximumLoss</variable>
+    <variable type="" id="P)NjFI#Az8j_imPxVHT{" islocal="false" iscloud="false">take profit</variable>
+    <variable type="" id="Af6WwokSaL9#7sS#fHwZ" islocal="false" iscloud="false">rsi</variable>
+    <variable type="" id="U78^nRt|.Nm!^h3SVxt;" islocal="false" iscloud="false">text</variable>
+    <variable type="" id="CO{E:G2~+^.#;N8MAkB-" islocal="false" iscloud="false">text1</variable>
+    <variable type="" id="+Qle[C2UxsCYzt@f*Dl0" islocal="false" iscloud="false">text2</variable>
+    <variable type="" id="ywu?jSSRCH[Z@vN{Z$XW" islocal="false" iscloud="false">text3</variable>
+    <variable type="" id="9Mg}AN~1#%c03(!^fOTy" islocal="false" iscloud="false">text4</variable>
+    <variable type="" id="%7auqu^]^91To`dGrRpa" islocal="false" iscloud="false">text5</variable>
+    <variable type="" id="MRc=MthNR?D_igc3#tbh" islocal="false" iscloud="false">text6</variable>
+    <variable type="" id="I7Q3~inZ}$Z!S58,^Bf8" islocal="false" iscloud="false">text7</variable>
+    <variable type="" id=",M]RdMa/eO)b{~inLWke" islocal="false" iscloud="false">text8</variable>
+    <variable type="" id="(yPFFEQoOfjqz5[whYqr" islocal="false" iscloud="false">text9</variable>
+    <variable type="" id="`b94!jy:(Cbk|:n%3_=p" islocal="false" iscloud="false">text10</variable>
+    <variable type="" id="7ssyB~^+RihKg7!E?L7N" islocal="false" iscloud="false">text11</variable>
+  </variables>
+  <block type="trade_definition" id=".AL`r)f,fVBvNT:EExu-" x="0" y="0">
+    <statement name="TRADE_OPTIONS">
+      <block type="trade_definition_market" id="0L3m,yVEUuw)|RQ9Fn*8" deletable="false" movable="false">
+        <field name="MARKET_LIST">synthetic_index</field>
+        <field name="SUBMARKET_LIST">random_index</field>
+        <field name="SYMBOL_LIST">R_100</field>
+        <next>
+          <block type="trade_definition_tradetype" id="%-r]XMp@#)fyLP|W*{7|" deletable="false" movable="false">
+            <field name="TRADETYPECAT_LIST">digits</field>
+            <field name="TRADETYPE_LIST">overunder</field>
+            <next>
+              <block type="trade_definition_contracttype" id="8#.J4o1V9R8SCPC~5ZAx" deletable="false" movable="false">
+                <field name="TYPE_LIST">both</field>
+                <next>
+                  <block type="trade_definition_candleinterval" id="KzzWY;b#F2fEt8=lb3-/" deletable="false" movable="false">
+                    <field name="CANDLEINTERVAL_LIST">60</field>
+                    <next>
+                      <block type="trade_definition_restartbuysell" id="b.Yp-JQxxM[,i|WO?3XM" deletable="false" movable="false">
+                        <field name="TIME_MACHINE_ENABLED">FALSE</field>
+                        <next>
+                          <block type="trade_definition_restartonerror" id="4=f!ElQv(A2~ES}8{8]N" deletable="false" movable="false">
+                            <field name="RESTARTONERROR">TRUE</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="V,?rx!Np__b!cPL(_2o3">
+        <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+        <value name="VALUE">
+          <block type="math_number" id=";~Mu+w{Zq)e*NV]^sSOf">
+            <field name="NUM">0.35</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="%4DH5JKrU]y]||hxs`mM">
+            <field name="VAR" id="C1sj}QRP*^Ngjgv+U:yR" variabletype="">stake win</field>
+            <value name="VALUE">
+              <block type="variables_get" id="6Ljr!t%o2dhxz9G}2C:}">
+                <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="brQLloe|wMEQWQEX2g4W">
+                <field name="VAR" id="@nr#0%ma@V~6H5D#nWB[" variabletype="">martingale</field>
+                <value name="VALUE">
+                  <block type="math_number" id="r;,)j8`be!@%lYlUz6~e">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="RvEl6d#nv9t]d=rK]:2!">
+                    <field name="VAR" id="P)NjFI#Az8j_imPxVHT{" variabletype="">take profit</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="riy#m3Og~DpQ.[{YvV_*">
+                        <field name="NUM">80</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="variables_set" id="8)x_d$^1K5chjKbRc|Nw">
+        <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+        <value name="VALUE">
+          <block type="logic_null" id="{,xp:G`FR$%!LZ=7Rwp]"></block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="N$04`~K_LeWX4Jxh_,1D">
+            <field name="MODE">UNTIL</field>
+            <value name="BOOL">
+              <block type="logic_compare" id=",5Hg=!H;wdErV6K-m[3I">
+                <field name="OP">NEQ</field>
+                <value name="A">
+                  <block type="variables_get" id="wMQb!~69dbd(^R;s9.(M">
+                    <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_null" id="FFy%Msu}#Sxyah#,CK4K"></block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="{etNRd/aC/:igZzShtJT">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="math_number_property" id="(U~i`VG1HKCjDun*Sw.X">
+                    <mutation divisor_input="false"></mutation>
+                    <field name="PROPERTY">EVEN</field>
+                    <value name="NUMBER_TO_CHECK">
+                      <shadow type="math_number" id="=i)lJeBPsm`iK#LQ=[Rs">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="total_runs" id="D)0mPJ.h7Pvcz#fML+C("></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="3mf45Wi*KtDcLlwH0UCn">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="math_number_property" id="81($y!eq%QIfg!^RbakN">
+                        <mutation divisor_input="false"></mutation>
+                        <field name="PROPERTY">EVEN</field>
+                        <value name="NUMBER_TO_CHECK">
+                          <shadow type="math_number" id="A@X1*k0[j`_tG62G,s|j">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="last_digit" id="sY*okPQvumFQa+A9)k^K"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="$v]8FH~(2Q8(^bh)K{-F">
+                        <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                        <value name="VALUE">
+                          <block type="text" id="A{q^:blLpkUR,h~7a@qR">
+                            <field name="TEXT">put</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_join" id="XMi[yu*l{J!(!l[`gvo=">
+                            <field name="VARIABLE" id="U78^nRt|.Nm!^h3SVxt;" variabletype="">text</field>
+                            <statement name="STACK">
+                              <block type="text_statement" id="Y6Qax,s($-:V.{g5$JC5">
+                                <value name="TEXT">
+                                  <shadow type="text" id="#y^2m/Ixy5y2[+QHt0~(">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="variables_get" id="h!1US|h=7A@%,hF/DNJO">
+                                    <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id="4lpU3ME=/?-sjaY]S.P)">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="14xv^[JHpJe_CMr2V*QL">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="text" id="D:@,5n|_Bdv#FW+oXReY">
+                                        <field name="TEXT">   </field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_statement" id="l[W+4y)+)!^#SjxY6VJ!">
+                                        <value name="TEXT">
+                                          <shadow type="text" id="@.omYsTp)+v6}sp8(*~:">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="variables_get" id="-,6Q[A%*,,+KUqBSRX8W">
+                                            <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="text_statement" id="Z]pQ7mbd+C(p^w1}xM@S">
+                                            <value name="TEXT">
+                                              <shadow type="text" id=")E[?uS=rHDY6AHQ6P6|1">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="49whqI1djKq:=r2l_ib=">
+                                                <field name="TEXT">✅</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="text_statement" id="L/CrEM6vEXPH0@NNvj.l">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="Pcb;xP[Op/(t1`3;jXCn">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="text" id=".CM-o=ho++o#@LmsO|uY">
+                                                    <field name="TEXT"> ⇶ </field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="notify" id=";Z7X)jPOpwy:mco!h8`O">
+                                <field name="NOTIFICATION_TYPE">success</field>
+                                <field name="NOTIFICATION_SOUND">silent</field>
+                                <value name="MESSAGE">
+                                  <shadow type="text" id="iP@PzDZx+I%{g{=)7;Qf">
+                                    <field name="TEXT">abc</field>
+                                  </shadow>
+                                  <block type="variables_get" id="AlC1QpG*/X!H)*/HeE(R">
+                                    <field name="VAR" id="U78^nRt|.Nm!^h3SVxt;" variabletype="">text</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="timeout" id="?RY+83/*SZdtS[KmQa.;">
+                                    <statement name="TIMEOUTSTACK">
+                                      <block type="trade_definition_tradeoptions" id="VBABfaKeU[7fr{Kg+e|i">
+                                        <mutation has_first_barrier="false" has_second_barrier="false" has_prediction="true"></mutation>
+                                        <field name="DURATIONTYPE_LIST">t</field>
+                                        <value name="DURATION">
+                                          <shadow type="math_number" id="|2fL?GGpt.,u8@1`%1G^">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="AMOUNT">
+                                          <shadow type="math_number" id=";9o=$cXV{{AYpHH?Kxe4">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                          <block type="variables_get" id="CrbjDw`.2iG;DYY{iwF*">
+                                            <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                                          </block>
+                                        </value>
+                                        <value name="PREDICTION">
+                                          <shadow type="math_number" id="Vz7;(iTqGgKo$@b]bC/$">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <value name="SECONDS">
+                                      <shadow type="math_number" id="F*fF6?NgJaYmeN#iU5oW">
+                                        <field name="NUM">0.000001</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="variables_set" id="9,+.8v{O6oo@5Vm2_qSE">
+                        <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                        <value name="VALUE">
+                          <block type="text" id="u*`#]zHNBiQ6M6D+pKQG">
+                            <field name="TEXT">call</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_join" id="wZWpVitB)DHa5n+;!Hf+">
+                            <field name="VARIABLE" id="CO{E:G2~+^.#;N8MAkB-" variabletype="">text1</field>
+                            <statement name="STACK">
+                              <block type="text_statement" id=".46Z(M%t;-BbU70,A1C:">
+                                <value name="TEXT">
+                                  <shadow type="text" id="_%!$^~EekSn{zRESa7gc">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="variables_get" id="NVH,U`sVKLg1/z,4%D%n">
+                                    <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id="gvD%e*z*x1Y,g,viz%BS">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="@I/a9Br:JD66)c;nJe9g">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="text" id="EigX?bjR1bv5-e]0V@f0">
+                                        <field name="TEXT">   </field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_statement" id="3(dI?qg[qGfu[`6[|yX9">
+                                        <value name="TEXT">
+                                          <shadow type="text" id="#a|H_,|={l]`pz,3tZ]8">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="variables_get" id="t*{iT)D.vQ|8T1;dxVeW">
+                                            <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="text_statement" id="Zm.]GCXwNUA}Sk5WN_U)">
+                                            <value name="TEXT">
+                                              <shadow type="text" id="A#$U$,t#ZYQ==qt}UYT@">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="ar3azZ;uUIR=chUQQ+q4">
+                                                <field name="TEXT">✅</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="text_statement" id="21#}s5Eq{@f#ds1g,9mj">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="vn^Eo%eJ/6FoPli~BM39">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="text" id="Z9:PeaH(u5F)lOeqBw_u">
+                                                    <field name="TEXT"> ⇶ </field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="notify" id="aLoI{PKPRHN;E`A%yoRq">
+                                <field name="NOTIFICATION_TYPE">success</field>
+                                <field name="NOTIFICATION_SOUND">silent</field>
+                                <value name="MESSAGE">
+                                  <shadow type="text" id="N`DJIW3f%?l=mJ,eXq=r">
+                                    <field name="TEXT">abc</field>
+                                  </shadow>
+                                  <block type="variables_get" id="46M@3-)K`9XEw{4D;/9e">
+                                    <field name="VAR" id="CO{E:G2~+^.#;N8MAkB-" variabletype="">text1</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="timeout" id="JM-`Rroar4!lt+[_`@e!">
+                                    <statement name="TIMEOUTSTACK">
+                                      <block type="trade_definition_tradeoptions" id="bY/@^b1T|Gi9/N3H{3x3">
+                                        <mutation has_first_barrier="false" has_second_barrier="false" has_prediction="true"></mutation>
+                                        <field name="DURATIONTYPE_LIST">t</field>
+                                        <value name="DURATION">
+                                          <shadow type="math_number" id="Td20?RLO[ODaMz6VSIw$">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="AMOUNT">
+                                          <shadow type="math_number" id="kLw_VuYe{3uK)kV5J@sM">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                          <block type="variables_get" id="U|MbU0P;_W]AW/Q?)e~v">
+                                            <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                                          </block>
+                                        </value>
+                                        <value name="PREDICTION">
+                                          <shadow type="math_number" id=".G0-VUFEppf(s[_zr2cT">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <value name="SECONDS">
+                                      <shadow type="math_number" id="zLwm6hjrN:nkJXDi9g#D">
+                                        <field name="NUM">0.000001</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="controls_if" id="R]e]Y8li@0}/eh@1RD]:">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="math_number_property" id="!{Y}7pdTU^#AD4(nO`)*">
+                        <mutation divisor_input="false"></mutation>
+                        <field name="PROPERTY">EVEN</field>
+                        <value name="NUMBER_TO_CHECK">
+                          <shadow type="math_number" id="zOiEWP}~uG]UI^H=]q5Y">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="last_digit" id="4O_8F:km/1}9GFfJs-3/"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="Un:MEtG-S?MlR~tJNgys">
+                        <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                        <value name="VALUE">
+                          <block type="text" id="XtNGmh+UQS2OmE+;C(@c">
+                            <field name="TEXT">call</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_join" id="{KPBaA[8P)fGPRXtlqZW">
+                            <field name="VARIABLE" id="+Qle[C2UxsCYzt@f*Dl0" variabletype="">text2</field>
+                            <statement name="STACK">
+                              <block type="text_statement" id="l5AXx;oq89K^1`4CbEXr">
+                                <value name="TEXT">
+                                  <shadow type="text" id="_|%3etCY#Zztn.cHr@`_">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="variables_get" id="3jFNxVv:$lzi2-]a#kGS">
+                                    <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id=":F#[wSxGl$@z1^li:!I/">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="}#0}@UfKb=CLfozYO2uI">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="text" id="}A|*9g|7gF.$$NDq06xr">
+                                        <field name="TEXT">   </field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_statement" id="EH,[f8!khSi5Rx?R=B$N">
+                                        <value name="TEXT">
+                                          <shadow type="text" id="A4)*puq~7ob[Vwv3zv]I">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="variables_get" id=",)oRfA-QRH3!-FUfKDMI">
+                                            <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="text_statement" id="E~$.-1A|*8Q,u_0L3qiX">
+                                            <value name="TEXT">
+                                              <shadow type="text" id="$p-L~:!~%!s]c!}?Pd#j">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="T`F[`9`8dHZoA4W5LZAi">
+                                                <field name="TEXT">✅</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="text_statement" id="(jd6[+]t:o(GfA[{PmCm">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="pjgp[1ji,l/@9uQ3irFR">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="text" id="$pmVRuPZjLDSOrAh!S6|">
+                                                    <field name="TEXT"> ⇶ </field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="notify" id="5#=6gq7VBW.F;VG-f2yV">
+                                <field name="NOTIFICATION_TYPE">success</field>
+                                <field name="NOTIFICATION_SOUND">silent</field>
+                                <value name="MESSAGE">
+                                  <shadow type="text" id="yNR/juHP*G2uK~kBm.MH">
+                                    <field name="TEXT">abc</field>
+                                  </shadow>
+                                  <block type="variables_get" id="7XZ,$BkO/mVyKGf]~o!P">
+                                    <field name="VAR" id="+Qle[C2UxsCYzt@f*Dl0" variabletype="">text2</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="timeout" id="T+blboDwGCb5Y@_(iwrN">
+                                    <statement name="TIMEOUTSTACK">
+                                      <block type="trade_definition_tradeoptions" id="!2!**UmfzgFAgg(+7M%k">
+                                        <mutation has_first_barrier="false" has_second_barrier="false" has_prediction="true"></mutation>
+                                        <field name="DURATIONTYPE_LIST">t</field>
+                                        <value name="DURATION">
+                                          <shadow type="math_number" id="/X06y_-H]Xj{f+-bWA2(">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="AMOUNT">
+                                          <shadow type="math_number" id="`{rbhm)h57#r+6~~exW-">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                          <block type="variables_get" id="29h3]dc%}gQoJos}Q9G#">
+                                            <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                                          </block>
+                                        </value>
+                                        <value name="PREDICTION">
+                                          <shadow type="math_number" id="szgo|bpC+.:{5Luq3?ph">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <value name="SECONDS">
+                                      <shadow type="math_number" id="@:}7(NpRI!Z[??W|(^E9">
+                                        <field name="NUM">0.000001</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="variables_set" id="~A{W}@v^ut9}Rk%0JaYp">
+                        <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                        <value name="VALUE">
+                          <block type="text" id="ag$`9~OjRr.RxLbZx-Qc">
+                            <field name="TEXT">call</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_join" id="[rVGO2MQm7#Ued_+kI06">
+                            <field name="VARIABLE" id="ywu?jSSRCH[Z@vN{Z$XW" variabletype="">text3</field>
+                            <statement name="STACK">
+                              <block type="text_statement" id="R0l]R6[9wn)8E!?ot}la">
+                                <value name="TEXT">
+                                  <shadow type="text" id="oo}O(.._q7.E!Q[43O)C">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="variables_get" id=";1BwUj]{aoe6_}E}]Kp,">
+                                    <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id="E})rbtbdG}7pE6F0[Iz+">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="akoK{so]11hfW4;VX/-i">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="text" id="k}=RBS}Zp#D$;?MTg$rx">
+                                        <field name="TEXT">   </field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_statement" id="h3.q.dwA1ll|arJe}jI!">
+                                        <value name="TEXT">
+                                          <shadow type="text" id="uk]O3SM1^e!ncQ=CUJeC">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="variables_get" id="7syoMiMxUjivZK{8{=K2">
+                                            <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="text_statement" id="Kg5)ZeIm#a5UL4sn@tDz">
+                                            <value name="TEXT">
+                                              <shadow type="text" id="5a-@/I;Es97*@Se%03#Z">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="ZMab^dVKNFBMH?(p7^Xg">
+                                                <field name="TEXT">✅</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="text_statement" id="AV9o,[C;u2l[?|+M)1$^">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="Eoo=sON[x/oHfU}-R@4a">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="text" id="0.Kdk2,MaF1FD;?g7qLd">
+                                                    <field name="TEXT"> ⇶ </field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="notify" id="zr}(]!Vry49BI:]Bt5c.">
+                                <field name="NOTIFICATION_TYPE">success</field>
+                                <field name="NOTIFICATION_SOUND">silent</field>
+                                <value name="MESSAGE">
+                                  <shadow type="text" id="@q}{h7sJf@lq8#8MI[oI">
+                                    <field name="TEXT">abc</field>
+                                  </shadow>
+                                  <block type="variables_get" id="^E)Sew8B1ZCGrlxiZ)*?">
+                                    <field name="VAR" id="ywu?jSSRCH[Z@vN{Z$XW" variabletype="">text3</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="timeout" id="eqFyU.!u._kAs1sLCvWk">
+                                    <statement name="TIMEOUTSTACK">
+                                      <block type="trade_definition_tradeoptions" id="Wi-2f87kPLwB3wYonNcK">
+                                        <mutation has_first_barrier="false" has_second_barrier="false" has_prediction="true"></mutation>
+                                        <field name="DURATIONTYPE_LIST">t</field>
+                                        <value name="DURATION">
+                                          <shadow type="math_number" id="qBiU/ZKf..1/]pSDg?TF">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="AMOUNT">
+                                          <shadow type="math_number" id="J$s7Pv}focHQfuXe3=D1">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                          <block type="variables_get" id="2us@cE{i/iU8a6DI8`zy">
+                                            <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                                          </block>
+                                        </value>
+                                        <value name="PREDICTION">
+                                          <shadow type="math_number" id="|]A:rRu,W=5:_SgHbUlD">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <value name="SECONDS">
+                                      <shadow type="math_number" id="3_KLySH2CM0e5$Q1Ol{P">
+                                        <field name="NUM">0.000001</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="text_join" id="Pxu.4|nWR(%*4$2Q*4pf">
+                <field name="VARIABLE" id="9Mg}AN~1#%c03(!^fOTy" variabletype="">text4</field>
+                <statement name="STACK">
+                  <block type="text_statement" id="z[_31|M)!^rRBiDtkf$1">
+                    <value name="TEXT">
+                      <shadow type="text" id="l)pQUAi}W[%*6@Z/0J$A">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="variables_get" id="S7A*PzD2fo,}LT[n4f8/">
+                        <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="text_statement" id="F8U8Fxb8|^bb9zX@F@}$">
+                        <value name="TEXT">
+                          <shadow type="text" id="U5KzJu6xpJ2;gXZqm-4p">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="text" id="y%ui,m[B%u7rpwreDhY9">
+                            <field name="TEXT">   </field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_statement" id="xTiB[PCnYL4KK{:hd78C">
+                            <value name="TEXT">
+                              <shadow type="text" id="`BDHMjVgi~^3yVZ3%Mq{">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="variables_get" id="K[3]8/$e_xD|e1@rEHz5">
+                                <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="text_statement" id="eBTL0je:Z.N{Wv#{=xWM">
+                                <value name="TEXT">
+                                  <shadow type="text" id="2t2wMVHMr*0}l}T;G$}I">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="text" id="c-|t;dv{s]^DU2:?:Br{">
+                                    <field name="TEXT">❌</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id="f|#8CA%MveI~/|!!5S$%">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="xX;:g**[x{kRD~CUV(?O">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="text" id="`4X%4_T-n=ur+7:|tsO=">
+                                        <field name="TEXT"> ⇶ </field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="notify" id="uIQP_asq2IWCJ[?Eue9!">
+                    <field name="NOTIFICATION_TYPE">warn</field>
+                    <field name="NOTIFICATION_SOUND">silent</field>
+                    <value name="MESSAGE">
+                      <shadow type="text" id="h_ixX~ui@u1l93FGy!98">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="variables_get" id="`oY^(l|*n)/S:+gcy)VP">
+                        <field name="VAR" id="9Mg}AN~1#%c03(!^fOTy" variabletype="">text4</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="during_purchase" id="J:ETSc1XIAlYNMM:gF/o" x="722" y="0">
+    <statement name="DURING_PURCHASE_STACK">
+      <block type="timeout" id="Y_RoBb9qf,a~|;;4P%}p">
+        <statement name="TIMEOUTSTACK">
+          <block type="timeout" id="|7)9w:$p|MX$wU^!x1|*">
+            <statement name="TIMEOUTSTACK">
+              <block type="sell_at_market" id="@}pVq)sOS!Lb~0_G^/jk"></block>
+            </statement>
+            <value name="SECONDS">
+              <shadow type="math_number" id="^xm*pl-wgEaW2b2Xaj%5">
+                <field name="NUM">0.000001</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <value name="SECONDS">
+          <shadow type="math_number" id="RRD`,a~9~Q:d*tv,z(z7">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="r9^C2G09wZACwA+zRG_o" x="722" y="376">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="4+B+$|+}wwu@p3FuXn8J">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="5BZqqhGd]fJbUl*W03+u">
+            <field name="OP">GTE</field>
+            <value name="A">
+              <block type="total_profit" id="nevF.==0c}p1XaE{i+P2"></block>
+            </value>
+            <value name="B">
+              <block type="variables_get" id="RP9uULR.0*CJY{8f55{4">
+                <field name="VAR" id="P)NjFI#Az8j_imPxVHT{" variabletype="">take profit</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="text_print" id="}`2;B*6vkQuflw$$I8,A">
+            <value name="TEXT">
+              <shadow type="text" id="AJL=yh{TD2-VjSNSc#b(">
+                <field name="TEXT">Take Profit Level has reached.</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="controls_if" id="#iXzzkd0{WN+.N{x$YFv">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="contract_check_result" id="sgDK8oW#|jT2vuxVE/Qh">
+                <field name="CHECK_RESULT">win</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="timeout" id="J$PQy+IIw#Qc?O]0-^WK">
+                <statement name="TIMEOUTSTACK">
+                  <block type="variables_set" id="G8FvB3?QPawudz/YdH$p">
+                    <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                    <value name="VALUE">
+                      <block type="variables_get" id="CAJEE5S)J|cxPdGNsNN%">
+                        <field name="VAR" id="C1sj}QRP*^Ngjgv+U:yR" variabletype="">stake win</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="text_join" id="%1uV;$5CHghquYyJ;w0m">
+                        <field name="VARIABLE" id="`b94!jy:(Cbk|:n%3_=p" variabletype="">text10</field>
+                        <statement name="STACK">
+                          <block type="text_statement" id="F!+8Qd2!VTU|!^9A@({i">
+                            <value name="TEXT">
+                              <shadow type="text" id="R[P0fOHEoD^{!/:7NF;E">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="variables_get" id="SbVSV[z`{k$FX+e0Zl)`">
+                                <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="text_statement" id="S30#PDyjn2aS+ko5DwsW">
+                                <value name="TEXT">
+                                  <shadow type="text" id="f.BS,]wz6=l18jthS`[Z">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="text" id="2By@53SF%*N5MW)kcs?$">
+                                    <field name="TEXT">   </field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id="ly5kj%cmIs^%ZfO(w@+?">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="#t`TSs(JP=MxKvUnfi$:">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="variables_get" id="9E4OouD+AVX?2I%|[W.!">
+                                        <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_statement" id="LDYl+w5B,P^KV;EP)51%">
+                                        <value name="TEXT">
+                                          <shadow type="text" id="]`uha,+%;v/c?Cs+Ssrq">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="text" id=";9_6UaSrx!R!uJtqnXAN">
+                                            <field name="TEXT">✅</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="text_statement" id="z8IMl!naXSXm![#Bv{El">
+                                            <value name="TEXT">
+                                              <shadow type="text" id="$fAuhs1MMm.|$)7Ebqhc">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="[K51WX:+kI=kRYD(,wM{">
+                                                <field name="TEXT"> ⇶ </field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="notify" id="O:3(]3N[iW!`pQoG)0[1">
+                            <field name="NOTIFICATION_TYPE">success</field>
+                            <field name="NOTIFICATION_SOUND">earned-money</field>
+                            <value name="MESSAGE">
+                              <shadow type="text" id="%|=I~M%Eqq=hU%|2e+6L">
+                                <field name="TEXT">abc</field>
+                              </shadow>
+                              <block type="variables_get" id="Ntt?H];PSeVK22TvRcY)">
+                                <field name="VAR" id="`b94!jy:(Cbk|:n%3_=p" variabletype="">text10</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="SECONDS">
+                  <shadow type="math_number" id="Pd5R..6L*Dht,{.;jXwc">
+                    <field name="NUM">0.000001</field>
+                  </shadow>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="timeout" id="@_4R@DW$WrRuS~!vak*0">
+                <statement name="TIMEOUTSTACK">
+                  <block type="variables_set" id="NI_$6g`^.nb5/7?3Hd!Y">
+                    <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="n%iJ0^%x;D9_IX!-3`Rt">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <shadow type="math_number" id="W}s;gDpWVxTbdNIy1m8#">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id="XcCSX6T)v=hmS@~VE]#X">
+                            <field name="VAR" id="dO,2jA#,W(l+~Rs7@l[|" variabletype="">stake</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="mF!_V$$Mkh)4K[eESrzE">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id="i^5.^EP%feHA]SE|G~DA">
+                            <field name="VAR" id="@nr#0%ma@V~6H5D#nWB[" variabletype="">martingale</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="text_join" id="KOx_OPJ$#%;E+Z1H}4@O">
+                        <field name="VARIABLE" id="7ssyB~^+RihKg7!E?L7N" variabletype="">text11</field>
+                        <statement name="STACK">
+                          <block type="text_statement" id="*Q/o`$,axqwv7A?{WU!z">
+                            <value name="TEXT">
+                              <shadow type="text" id=":q){wlFU~2,d)?L}Ph=J">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="variables_get" id="5NG(9~N_UG7ikewDx5/]">
+                                <field name="VAR" id="J3g++(PvQv/)qGUt#G2:" variabletype="">trader</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="text_statement" id=":InrD{VESAz*w$35Afi$">
+                                <value name="TEXT">
+                                  <shadow type="text" id="x+a2KBE^bxT_2e]a_4[q">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="text" id="Z_ZK!!*H]%J6|8SF44yU">
+                                    <field name="TEXT">   </field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_statement" id="x5ys#qRTUNFP`/Q`XK^K">
+                                    <value name="TEXT">
+                                      <shadow type="text" id="6xDu3~dtXlKwV6NrwGsc">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="variables_get" id="{Gq{p1UYsA~C)GdK,-T4">
+                                        <field name="VAR" id="Af6WwokSaL9#7sS#fHwZ" variabletype="">rsi</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_statement" id=";1_o`(^3t4kNLf03sHGD">
+                                        <value name="TEXT">
+                                          <shadow type="text" id="Uqi-T;`EK=I_e#q]Dw:3">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="text" id="*#l*Aa+5LGM)cFYIDeQ!">
+                                            <field name="TEXT">✅</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="text_statement" id="?@k#W=+$qsHm$mxCkwd[">
+                                            <value name="TEXT">
+                                              <shadow type="text" id="iF0rzp(aIA2.xT^e[9cR">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="[@f$#v-tEYpr3nDJ4UiC">
+                                                <field name="TEXT"> ⇶ </field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="notify" id="_w[b`ahT).:H8-,iE+vi">
+                            <field name="NOTIFICATION_TYPE">success</field>
+                            <field name="NOTIFICATION_SOUND">error</field>
+                            <value name="MESSAGE">
+                              <shadow type="text" id="S#6pV@kf0l4sYV$`0q5~">
+                                <field name="TEXT">abc</field>
+                              </shadow>
+                              <block type="variables_get" id="$R3MW~XI]w4EgQ#hTCR2">
+                                <field name="VAR" id="7ssyB~^+RihKg7!E?L7N" variabletype="">text11</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="SECONDS">
+                  <shadow type="math_number" id="uw*){N2I(D*zYU2r#SOy">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="trade_again" id="!(.Jv?x=89B7+S,0R+Ho"></block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="2+R+tqb)}dHDB`N-S)$O" x="0" y="3920">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="timeout" id=";BMJ6Dr]#4,ycPR?Ql46">
+        <statement name="TIMEOUTSTACK">
+          <block type="timeout" id="5`CVOca6,jl,8@ya5KhQ">
+            <statement name="TIMEOUTSTACK">
+              <block type="purchase" id="koJ!d0Bkyy|v{yJN!VqO">
+                <field name="PURCHASE_LIST">DIGITOVER</field>
+              </block>
+            </statement>
+            <value name="SECONDS">
+              <shadow type="math_number" id="(bw0;yaYj?X]6J+n1jeX">
+                <field name="NUM">0.000001</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <value name="SECONDS">
+          <shadow type="math_number" id="vKC26FAYc{LbtloF8~_L">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="_0Y:aKrLr,/uLnC6Q8T(" collapsed="true" x="0" y="4296">
+    <mutation>
+      <arg name="dalembert:profit" varid="8-FGM6FF)6Y!:[]L7ZW0"></arg>
+      <arg name="dalembert:resultIsWin" varid="/shM51Nl|.I_R[9=PPJd"></arg>
+    </mutation>
+    <field name="NAME">D'Alembert Trade Again After Purchase</field>
+    <comment id="vhPucn$Ja{n|ckc8zJYW" pinned="true" h="200" w="200" x="0" y="4296" minimized="true">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="math_change" id="/0!q7Pu0{[Y`2xq2kwf1">
+        <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+        <value name="DELTA">
+          <shadow type="math_number" id="`O),ai1*},^ydxLNfN~W">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="variables_get" id="S8byff#P9NeQKcQafrD7">
+            <field name="VAR" id="8-FGM6FF)6Y!:[]L7ZW0" variabletype="">dalembert:profit</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="w)Ik/W*Oid~A_YzT|!1?">
+            <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id=")F]=SdV~G$,lsba!M(Gj">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <shadow type="math_number" id="zn~G%vn*OZ`kjjR[UfA6">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="math_round" id="(W)qW%SqpI{C41^V4w;e">
+                    <field name="OP">ROUND</field>
+                    <value name="NUM">
+                      <shadow type="math_number" id="ZLm2AmYNi[{A4^c5EkR!">
+                        <field name="NUM">3.1</field>
+                      </shadow>
+                      <block type="math_arithmetic" id="d(k21Jhr9n@rBu%_*FIS">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <shadow type="math_number" id=")[|]jb:3Wv7qkp=X/azp">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id="UCfvN69+`O(Y?YvWY/ww">
+                            <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="eI@8~dI[-d`IwxGP+dlA">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="math_number" id=";~VKY.~4]~:Cfa}nCKB)">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="!]l#3B^]J%!d)d*Uc`m2">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="math_number" id="I5m}9E~1b_Cmx9=AL_ob">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="7(zG8%-,=84J1PM6ACC9">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="variables_get" id="{P56RKD}(/(EO/.KaeIF">
+                    <field name="VAR" id="/shM51Nl|.I_R[9=PPJd" variabletype="">dalembert:resultIsWin</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="text_join" id="OZ^Y;85ozSI;J^}i+!jo">
+                    <field name="VARIABLE" id="%7auqu^]^91To`dGrRpa" variabletype="">text5</field>
+                    <statement name="STACK">
+                      <block type="text_statement" id="m~ia9v3NNiUhs4Y-~n/q">
+                        <value name="TEXT">
+                          <shadow type="text" id="`|y[3dl)SIH**eyq=CEb">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="text" id="J0+BJ}R?!BR]Fplz{el_">
+                            <field name="TEXT">Won:</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_statement" id="GP%^_[0R7fmkF5*1X=Xy">
+                            <value name="TEXT">
+                              <shadow type="text" id="j|{.mnIhy|.?B;nUAa;M">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="variables_get" id="J*JxdSp7!%Uu%0[(QYOT">
+                                <field name="VAR" id="8-FGM6FF)6Y!:[]L7ZW0" variabletype="">dalembert:profit</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="notify" id="E#K=wlgP!Ssne0/2))o8">
+                        <field name="NOTIFICATION_TYPE">success</field>
+                        <field name="NOTIFICATION_SOUND">silent</field>
+                        <value name="MESSAGE">
+                          <block type="variables_get" id="[%ywwDKUolm;__I.~gpq">
+                            <field name="VAR" id="%7auqu^]^91To`dGrRpa" variabletype="">text5</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="text_join" id="/}7/UW8mcgwR6R2r{7Ra">
+                    <field name="VARIABLE" id="MRc=MthNR?D_igc3#tbh" variabletype="">text6</field>
+                    <statement name="STACK">
+                      <block type="text_statement" id="uc}2Mo;[h#w7o).zEYLD">
+                        <value name="TEXT">
+                          <shadow type="text" id="Lvzqb2zAklLPK`KOBT_#">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="text" id="ve+%0o)h/]Gj3Klr,!_`">
+                            <field name="TEXT">Lost: </field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_statement" id="1^oOOZaY6N?+ngqkVq5/">
+                            <value name="TEXT">
+                              <shadow type="text" id="5eO?AJ8Hcs{kXP{~=#iy">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="math_single" id="-Rn]Q,]p-5}3WsZ5G$cm">
+                                <field name="OP">ABS</field>
+                                <value name="NUM">
+                                  <shadow type="math_number" id="JMAY+8cO|2$BgOM$J4r]">
+                                    <field name="NUM">9</field>
+                                  </shadow>
+                                  <block type="variables_get" id="qq?CqnhJ9MbB%r??wNQ5">
+                                    <field name="VAR" id="8-FGM6FF)6Y!:[]L7ZW0" variabletype="">dalembert:profit</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="notify" id="A*7%$-b}bUeJM!lICm,O">
+                        <field name="NOTIFICATION_TYPE">warn</field>
+                        <field name="NOTIFICATION_SOUND">silent</field>
+                        <value name="MESSAGE">
+                          <block type="variables_get" id="S{$|+9Gm=M{lx(l#G@`w">
+                            <field name="VAR" id="MRc=MthNR?D_igc3#tbh" variabletype="">text6</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="procedures_callnoreturn" id="s?T7YA[/2(dU-Nm5`6#j">
+                    <mutation name="D'Alembert Core Functionality">
+                      <arg name="dalembert:resultIsWin"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="variables_get" id="G[0%8rgIaNid5?PiW+Hz">
+                        <field name="VAR" id="/shM51Nl|.I_R[9=PPJd" variabletype="">dalembert:resultIsWin</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="text_join" id="wM$20)If+V!lczJBuu:3">
+                        <field name="VARIABLE" id="I7Q3~inZ}$Z!S58,^Bf8" variabletype="">text7</field>
+                        <statement name="STACK">
+                          <block type="text_statement" id="u#K(G~[HeYVd?U!2af(-">
+                            <value name="TEXT">
+                              <shadow type="text" id="22C,M^j)69.5BA2kmj}:">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="text" id="myeMf`1lc/6la6eu.UQw">
+                                <field name="TEXT">Total Profit: </field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="text_statement" id="QXYu)*$L?4M;3B1y)vMn">
+                                <value name="TEXT">
+                                  <shadow type="text" id="dYkJ8QuY}B[hE,L~M]6!">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="variables_get" id="rU_r}[R9V1[$k~J|h~Hy">
+                                    <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="notify" id="GQ5P@PKO.njhaz+z#c2U">
+                            <field name="NOTIFICATION_TYPE">info</field>
+                            <field name="NOTIFICATION_SOUND">silent</field>
+                            <value name="MESSAGE">
+                              <block type="variables_get" id="IU;?djn]Y,;OZ_a(=Ip_">
+                                <field name="VAR" id="I7Q3~inZ}$Z!S58,^Bf8" variabletype="">text7</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="xG6@Z,=|ioqyz}nq/295">
+                                <field name="VAR" id="[w@pzvBAlteju[8,x#hD" variabletype="">dalembert:tradeAgain</field>
+                                <value name="VALUE">
+                                  <block type="logic_boolean" id="u_g,l8q3jc9^J=~oRUXm">
+                                    <field name="BOOL">FALSE</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_if" id="`qu?,}gaW6%7E]7e0K31">
+                                    <mutation else="1"></mutation>
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="ZRmX0;~8]Ht$i#oV-j1@">
+                                        <field name="OP">LT</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="?%E.!^:%ltiqz6_aQG@L">
+                                            <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="variables_get" id="vR:IRPfM?Ad1GwuQn.~7">
+                                            <field name="VAR" id="ZGpA`4foih2T_0.]xE66" variabletype="">dalembert:expectedProfit</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="controls_if" id="|hUwaASLlrSQzOauz+VR">
+                                        <mutation else="1"></mutation>
+                                        <value name="IF0">
+                                          <block type="logic_compare" id="+gy_Ab+,ZQ8#C2W/55U1">
+                                            <field name="OP">GT</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="Md,H=sQ*pP/@_DR,-%Pv">
+                                                <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_single" id="5yoiz6mwWkt$U2s=%{mB">
+                                                <field name="OP">NEG</field>
+                                                <value name="NUM">
+                                                  <shadow type="math_number" id="W@Ldu:C/5GW^*D/@K!J.">
+                                                    <field name="NUM">9</field>
+                                                  </shadow>
+                                                  <block type="variables_get" id="^I)0zqwl`pe;JT]i62/y">
+                                                    <field name="VAR" id="%o8CQE,uNdg`rmRL:-ca" variabletype="">dalembert:maximumLoss</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="variables_set" id="0__7lP_H?pK^?JAV$[at">
+                                            <field name="VAR" id="[w@pzvBAlteju[8,x#hD" variabletype="">dalembert:tradeAgain</field>
+                                            <value name="VALUE">
+                                              <block type="logic_boolean" id="Za6_:ighK5gipiO_p$m;">
+                                                <field name="BOOL">TRUE</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </statement>
+                                        <statement name="ELSE">
+                                          <block type="text_join" id="?uS(pM`X;VCs05p1n4{:">
+                                            <field name="VARIABLE" id=",M]RdMa/eO)b{~inLWke" variabletype="">text8</field>
+                                            <statement name="STACK">
+                                              <block type="text_statement" id="Z+_6/]MWO0i4gKax06~*">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="/ws)qOG+WK2=5ERfr|^m">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="text" id="d2@U/B5OKB.%=`QMQZ=F">
+                                                    <field name="TEXT">Maximum Loss Occurred! Total Loss: </field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="text_statement" id="s~HG)@@o;$OO5DYXklST">
+                                                    <value name="TEXT">
+                                                      <shadow type="text" id="!!NYvFBY_^o5WjT5riOb">
+                                                        <field name="TEXT"></field>
+                                                      </shadow>
+                                                      <block type="math_single" id="@%4evHz|MYT/Yz,QwUe)">
+                                                        <field name="OP">NEG</field>
+                                                        <value name="NUM">
+                                                          <shadow type="math_number" id="A)x*z],+,`sGI-iwl]RV">
+                                                            <field name="NUM">9</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="rM*lxJ*{7[(?bt^ypfu]">
+                                                            <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="text_print" id="dly^}(vrc*W;Q@v]J!N~">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="kN(~@|?HpfDJr{ahshLi">
+                                                    <field name="TEXT">abc</field>
+                                                  </shadow>
+                                                  <block type="variables_get" id="i)8.9awEG~9FAgj#c~g]">
+                                                    <field name="VAR" id=",M]RdMa/eO)b{~inLWke" variabletype="">text8</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </statement>
+                                    <statement name="ELSE">
+                                      <block type="text_join" id="Fwlu#WigV_xZ@;{rUOaS">
+                                        <field name="VARIABLE" id="(yPFFEQoOfjqz5[whYqr" variabletype="">text9</field>
+                                        <statement name="STACK">
+                                          <block type="text_statement" id="7E[XlmMHBU`EM+Ly6S)%">
+                                            <value name="TEXT">
+                                              <shadow type="text" id="tE/g1LmE;yEL]bxqs3bR">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="text" id="fix$678,**`KxrlP8fTO">
+                                                <field name="TEXT">Expected Profit Made! Total Profit: </field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="text_statement" id="a(Hik`Kua|~#3fS.:tJd">
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="[P`o`Yi:dgle6mip9v@y">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="variables_get" id="`},q^BW%/+iodGQ0TS/a">
+                                                    <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="text_print" id="7x}dnq|x[dz?:6EXe5u%">
+                                            <value name="TEXT">
+                                              <shadow type="text" id=";QU;|ap!%a.sOW@~:R`w">
+                                                <field name="TEXT">abc</field>
+                                              </shadow>
+                                              <block type="variables_get" id="{9UH,{:JFR8KH#^Z*,A%">
+                                                <field name="VAR" id="(yPFFEQoOfjqz5[whYqr" variabletype="">text9</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="*l~W@U/?ox[i+?kcBu8{">
+        <field name="VAR" id="[w@pzvBAlteju[8,x#hD" variabletype="">dalembert:tradeAgain</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defnoreturn" id=",MdvSRerJ6iBCbz_Hz83" collapsed="true" x="0" y="4392">
+    <mutation>
+      <arg name="dalembert:resultIsWin" varid="/shM51Nl|.I_R[9=PPJd"></arg>
+    </mutation>
+    <field name="NAME">D'Alembert Core Functionality</field>
+    <comment id="i{`r~D(bjCDsMAn#*(B}" pinned="true" h="200" w="200" x="0" y="4392" minimized="true">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id=".O!mNJ;;c4yKVGO{xh`0">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="variables_get" id="k)(`76[vii4IDvI;TAsS">
+            <field name="VAR" id="/shM51Nl|.I_R[9=PPJd" variabletype="">dalembert:resultIsWin</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="FM/d%^OrXBgrt+33J9$%">
+            <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="]AWEx,ogDcDa72s_OrlA">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <shadow type="math_number" id="%J[5}/x]t:;+L(C1!f2@">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id="mL?UZ=jcUR]]_#-aM-Q6">
+                    <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="qd-@mdy1oYg$c9_GsJ!s">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id="p`:Pdf]EGcGUU+jFz3$.">
+                    <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="fuF90Hsry5W+tRT.=_T8">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="`{[,VQc+/h{Lz9*}u^Qv">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="~j]RH=c-s.%f^KEt2:?0">
+                        <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="!.Bkd,#xRRatxjO9W2=J">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="Ynl^f]$*MX{xEgH]T~!#">
+                    <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="Mxe:q4.1KVY@J]#I@X~K">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <shadow type="math_number" id="+e59{12%:mJjC;,G4SgM">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id="m$tTDg%6IZ1qgla=jki|">
+                            <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="5kX@;Z4f@HjrF:=hY/5s">
+                            <field name="NUM">1</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="variables_set" id="K!w8z_47L|eAXs^Y9JDk">
+                    <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="28vr(Gi{``bC7pj(Y:4W">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="notify" id="A{UHtGJ,bC(Q|HIhR2Sy">
+                        <field name="NOTIFICATION_TYPE">success</field>
+                        <field name="NOTIFICATION_SOUND">silent</field>
+                        <value name="MESSAGE">
+                          <block type="text" id="O|R9VlGMILf32_G|_$x/">
+                            <field name="TEXT">One DAlembert session finished successfully.</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="variables_set" id="PtCk^cd1l~iIgkW{97Kp">
+            <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id=".N^,6X5wk7-HN5Xx$F@;">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <shadow type="math_number" id="fitGC$7O.a;V5LMD93A[">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id="9-(j3zSW6{JauK$OPR4%">
+                    <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="UGM-5muA?G*PONF]~Up1">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id="{!c0;!^My5z{CMZh^]A#">
+                    <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="Z%RTxt}S3h!t6BA3SV6%">
+                <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="9CC/a`]vJuk_k_-{6L@2">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <shadow type="math_number" id="%N)h^!.SC~kTsWSK3-]q">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="A@O$?yd?$7Ow-=MUf`yX">
+                        <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id="tLwcXVX,JnXd,?_/0}7k">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="076pr`TF5}9XQW5n4(qX" collapsed="true" x="0" y="4488">
+    <field name="NAME">D'Alembert Trade Amount</field>
+    <comment id="R:RllGw=L[Dc[[BNXx1@" pinned="true" h="200" w="200" x="0" y="4488" minimized="true">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id="V2^;D*,X]g6LDa4L-e,v">
+        <value name="IF0">
+          <block type="logic_compare" id="#ohf=0Ct@K){pN1GIyw6">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="VcPYWcORo%$.?ZpU`0kK">
+                <field name="VAR" id="ZGpA`4foih2T_0.]xE66" variabletype="">dalembert:expectedProfit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_null" id=":B[C3LnPh8oUPEu{6706"></block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="Q-.Le!IMe]HS7LCtOMzx">
+            <field name="VAR" id="ZGpA`4foih2T_0.]xE66" variabletype="">dalembert:expectedProfit</field>
+            <value name="VALUE">
+              <block type="text_prompt_ext" id="K?)0*PNzI7`Q!8;J7+Sj">
+                <field name="TYPE">NUMBER</field>
+                <value name="TEXT">
+                  <shadow type="text" id="X-S(oN@A{P!5]!+}CdH8">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text" id="D,uLilDiAr5,XOsg^-pT">
+                    <field name="TEXT">Expected Profit</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="u5b6Gl|$7F]#e!?fycZ9">
+            <value name="IF0">
+              <block type="logic_compare" id="Lw|LhzwxW)N-p]AL`#l+">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="(B%X9P9h}]oO`?d4^`KN">
+                    <field name="VAR" id="%o8CQE,uNdg`rmRL:-ca" variabletype="">dalembert:maximumLoss</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_null" id="YQz_.0?$0|lB7]F@dz^S"></block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="(}O/#*dlDIBkHb%P(~`2">
+                <field name="VAR" id="%o8CQE,uNdg`rmRL:-ca" variabletype="">dalembert:maximumLoss</field>
+                <value name="VALUE">
+                  <block type="text_prompt_ext" id="xprG:X{~M[(}$qCicbX6">
+                    <field name="TYPE">NUMBER</field>
+                    <value name="TEXT">
+                      <shadow type="text" id="TTt?M!rrdUk)}ZlP)jIr">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="text" id="pc,fN,K`pn;w7#m5f{{?">
+                        <field name="TEXT">Maximum Loss Amount</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="CdyiS##]KZVf,l(:pz}@">
+                <value name="IF0">
+                  <block type="logic_compare" id="my979-Th=Xn/IctF=g?o">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="foO,?2C;G{U_5x#L[fQq">
+                        <field name="VAR" id="-PgUuax5KQf1zn42iCd~" variabletype="">dalembert:amount</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_null" id="n*-P!IWKnJNC(?@^Y-{x"></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="*:{C=*]zgN*F%1)cFI1(">
+                    <field name="VAR" id="-PgUuax5KQf1zn42iCd~" variabletype="">dalembert:amount</field>
+                    <value name="VALUE">
+                      <block type="text_prompt_ext" id="HQTrAb)LUYX{+.+4nJ.g">
+                        <field name="TYPE">NUMBER</field>
+                        <value name="TEXT">
+                          <shadow type="text" id="?i]p1Zm6GN~*_+7)T+zr">
+                            <field name="TEXT">abc</field>
+                          </shadow>
+                          <block type="text" id="qsrf@}[;M!/ed0P@K/eF">
+                            <field name="TEXT">Trade Amount</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="]7X8gKN#cCZaQu18*^`*">
+                    <value name="IF0">
+                      <block type="logic_compare" id="|POTBn`vsqre.h_EA?[,">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="BP+uP[EL|!KWKi#x%/zP">
+                            <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_null" id="Og#p7_%bnNr@odVf$}}R"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="p*]SY,v2?6NU7tFW^Roy">
+                        <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="JC`YM?csUJ7QbC-`,,Hq">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="/7I{J/F]lXRk0Eo}}tEg">
+                        <value name="IF0">
+                          <block type="logic_compare" id="1.4;]c!}~$Szdd!`M3no">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="N=?X:t{cOTPlJ3q{OXQ1">
+                                <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_null" id="T/OL)El-Q*V#GQ#8@0W-"></block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="_`=}?V1H%$9tGrQ)ym~Z">
+                            <field name="VAR" id="R2yOKK{FmV|TULnU8.,[" variabletype="">dalembert:profitUnits</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="{[inB$n3pMx.956GSXSp">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="7E/CVv6ZgRWqnrg!QY^I">
+                            <value name="IF0">
+                              <block type="logic_compare" id="Z|@HeJ^a0WnwT4?7@hM}">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="](%F]8O^2xKH!y$Pxm)B">
+                                    <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="logic_null" id=";Tu%WgRa2su.ewf|!3Q["></block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="variables_set" id="eDSzQO*~!H}D0fx7p34A">
+                                <field name="VAR" id="weOIq50C[S,Wr;`!|gYR" variabletype="">dalembert:totalProfit</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="M%m$q~.coE1X/nmj*}{b">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="math_arithmetic" id="8Z0xpu@d=3e(~L0I$l^8">
+        <field name="OP">MULTIPLY</field>
+        <value name="A">
+          <shadow type="math_number" id="bjx%(^+rrFaZN(VoQihq">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="variables_get" id="6NeYq)/@6B-:ljH3[=[w">
+            <field name="VAR" id="o((rBg*rL/qm;RU%PM7_" variabletype="">dalembert:size</field>
+          </block>
+        </value>
+        <value name="B">
+          <shadow type="math_number" id="(lU3$cnl(ESW]B3T8B_Z">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="variables_get" id="k-[XCzb|uSIct^eS?k{e">
+            <field name="VAR" id="-PgUuax5KQf1zn42iCd~" variabletype="">dalembert:amount</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+</xml>
