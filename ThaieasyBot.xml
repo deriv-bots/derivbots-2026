@@ -1,0 +1,72 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables></variables>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">callput</field>
+    <field name="TRADETYPE_LIST">risefall</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="text_print" id="$Me7_d*X)!9GnQ@+/IH?">
+        <value name="TEXT">
+          <shadow type="text" id="+XLujo@c{X`-C2tRbU[1">
+            <field name="TEXT">Welcome for ThaieasyBot</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="text_print" id="M^|L~7mn-nqI_rq(It.j">
+            <value name="TEXT">
+              <shadow type="text" id="))Yoyq~TrUVwQe+M!tBo">
+                <field name="TEXT">อย่าลืม MM กันด้วยน้า</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <field name="BARRIEROFFSETTYPE_LIST">+</field>
+        <field name="SECONDBARRIEROFFSETTYPE_LIST">-</field>
+        <comment pinned="false" h="80" w="160">Welcome for ThaieasyBot</comment>
+        <value name="DURATION">
+          <shadow type="math_number" id="|J$3(mY44t09GC98P73(">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" x="0" y="403">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+        <field name="PURCHASE_LIST">CALL</field>
+      </block>
+    </statement>
+  </block>
+  <block type="during_purchase" id="(4;NieXd}j|Bn!c-YiC|" x="0" y="511">
+    <statement name="DURING_PURCHASE_STACK">
+      <block type="controls_if" id="8?eYKAW%VczmRXQ-ou3r">
+        <value name="IF0">
+          <block type="check_sell" id="M=:_KpEeRAJY_}XTU^8~"></block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" x="0" y="651">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+    </statement>
+  </block>
+</xml>
