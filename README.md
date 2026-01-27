@@ -1,4 +1,4 @@
-<h1 align="center">🚀 Deriv Bots XML Collection 📄</h1>
+<h1 align="center">🚀 2026 Deriv Bots XML Collection 📄</h1>
 
 <p align="center">
 Accurated set of XML bots for <a href="https://dbot.deriv.com">dbot.deriv.com</a>  optimized for performance, precision, and profit.
