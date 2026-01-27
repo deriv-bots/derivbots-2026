@@ -1,0 +1,344 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id=":56BJ}+:JJfe^A0u,56E">smartRisk</variable>
+    <variable type="" id="),bJsabdLrm]sd}7#!].">tradeCounter</variable>
+    <variable type="" id="8|?_w|xt/]f[xA7%[`59">autoTrade</variable>
+    <variable type="" id="~[*J}fvhI6pf4YrR*yE{">tradeDisabled</variable>
+    <variable type="" id="X#q[qHPsaIIM1@TEd$ar">lastDigitPeriod</variable>
+    <variable type="" id="CT)GAXn,sxem!RWWZb(9">prediction</variable>
+  </variables>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">synthetic_index</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">digits</field>
+    <field name="TRADETYPE_LIST">overunder</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">TRUE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="3ZsjCHJysFKyg95G_a0|">
+        <field name="VAR" id=":56BJ}+:JJfe^A0u,56E" variabletype="">smartRisk</field>
+        <value name="VALUE">
+          <block type="smartrisk_settings" id="l!w3%q`n8!iRbfzQ[9rx">
+            <field name="STRATEGY">martingale</field>
+            <value name="INVESTMENT">
+              <shadow type="math_number" id="SL=,N_u1_gBjNUT.f.My">
+                <field name="NUM">0.48</field>
+              </shadow>
+            </value>
+            <value name="TAKE_PROFIT">
+              <shadow type="math_number" id="O@IUsMCZmleKV4b|$yBu">
+                <field name="NUM">0.6</field>
+              </shadow>
+            </value>
+            <value name="STOP_LOSS">
+              <shadow type="math_number" id="pF#8?!zB/5wI9MKWyb|1">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="PARAMETERS">
+              <block type="smartrisk_martingale" id="+$*YTNz0F;x*Q;1OK){;">
+                <field name="MARTINGALE_RESETMAXLEVEL">TRUE</field>
+                <value name="COMPOUND_LEVEL">
+                  <shadow type="math_number" id="6!TN.[gY)W1*1f|Bu/sc">
+                    <field name="NUM">3</field>
+                  </shadow>
+                </value>
+                <value name="MARTINGALE_FACTOR">
+                  <shadow type="math_number" id="f9Zi?#$9hyi80uqqtEs(">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <value name="MARTINGALE_START">
+                  <shadow type="math_number" id="kcwpvN,zJtv,JTv4(8*W">
+                    <field name="NUM">5</field>
+                  </shadow>
+                </value>
+                <value name="MARTINGALE_SPLIT">
+                  <shadow type="math_number" id="4__}PCj.8z4OAz#V,r,3">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <value name="MARTINGALE_MAXLEVEL">
+                  <shadow type="math_number" id="VjxLyv5n;jo/v0Pfa[!Y">
+                    <field name="NUM">5</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="dxro1bAJB%.b-]tbK(@?">
+            <field name="VAR" id="8|?_w|xt/]f[xA7%[`59" variabletype="">autoTrade</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="o+ah*)%J!*5Nd{v0Yb=q">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="]B3M_rXBMnv:#(d9Kc4z">
+                <field name="VAR" id="X#q[qHPsaIIM1@TEd$ar" variabletype="">lastDigitPeriod</field>
+                <value name="VALUE">
+                  <block type="math_number" id="j%LeulhZBCmvw5+hS4pM">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="`6(vgqN;v9e}Ccr_epB*">
+                    <mutation name="init"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="notify" id="{WSiI,dA5t_d)URrEjfi">
+        <field name="NOTIFICATION_TYPE">success</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id="Zmd4+8YeasUHj`q_RJl#">
+            <field name="TEXT"></field>
+          </shadow>
+          <block type="text_join" id="c)g#D`*VzMh?DCp7cfcs">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="text" id="p0zxa_m,UHcWO;47S`R@">
+                <field name="TEXT">ELEMENT #1 - Trade Options</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="0,Mv{0o=F2SW8e:ZGeKC">
+                <field name="TEXT"> - </field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="text_join" id="0B!k].aLNzggzOdYCP8d" inline="true">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="3NVQ*@#zFsp%#D!y+CfC">
+                    <field name="TEXT">prediction(</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="variables_get" id="N73RMJH6r)1R@RR14fhR">
+                    <field name="VAR" id="CT)GAXn,sxem!RWWZb(9" variabletype="">prediction</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id=")yp+Oy8;MU^*4],HL,np">
+                    <field name="TEXT">)</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+            <field name="DURATIONTYPE_LIST">t</field>
+            <field name="CURRENCY_LIST">USD</field>
+            <value name="DURATION">
+              <shadow type="math_number" id="{1yv7b13lh-nX04[cgs1">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="AMOUNT">
+              <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+                <field name="NUM">1</field>
+              </shadow>
+              <block type="smartrisk_query" id=";{wbd0iKD0YhstOAwnw!">
+                <field name="SMARTRISK_LIST">stake</field>
+                <field name="SMARTRISK_VAR" id=":56BJ}+:JJfe^A0u,56E" variabletype="">smartRisk</field>
+              </block>
+            </value>
+            <value name="PREDICTION">
+              <shadow type="math_number" id="9ZDl$,QP@`wYFoF]5l4n">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="1Lx*$Q{TkA9H%gieiZh%" collapsed="true" x="0" y="925">
+    <field name="NAME">init</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="cMn6+}BiIOZzcFbO;x(#">
+        <field name="VAR" id="),bJsabdLrm]sd}7#!]." variabletype="">tradeCounter</field>
+        <value name="VALUE">
+          <block type="math_number" id="Df=v|k1u*e6ZM;d,/Wlx">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="q`*$,dkg}ll:1gaz43{h">
+            <field name="VAR" id="~[*J}fvhI6pf4YrR*yE{" variabletype="">tradeDisabled</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="pyh@829_aUusz;F}3/]-">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" x="0" y="978">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="Ve(N?]h@5uACY8EEp-Lr">
+        <value name="IF0">
+          <block type="logic_operation" id="kJ1|$wHX0t5/BQz4~BI@">
+            <field name="OP">AND</field>
+            <value name="A">
+              <block type="variables_get" id="%Zsu${3oZb;7El^yV2@}">
+                <field name="VAR" id="8|?_w|xt/]f[xA7%[`59" variabletype="">autoTrade</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_negate" id="Q27#SkeFHn5(,G2Zsl~r">
+                <value name="BOOL">
+                  <block type="variables_get" id="`A*MiMb]+oc.gdN~Pv2f">
+                    <field name="VAR" id="~[*J}fvhI6pf4YrR*yE{" variabletype="">tradeDisabled</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+            <field name="PURCHASE_LIST">DIGITOVER</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="during_purchase" id="Hq[3x4oA?rWbcYX(7VcE" x="0" y="1146">
+    <statement name="DURING_PURCHASE_STACK">
+      <block type="notify" id="Om161%hu5q2bJN5]Y@.[">
+        <field name="NOTIFICATION_TYPE">warn</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id=")b2jd33+O]syb`%U.9N6">
+            <field name="TEXT"></field>
+          </shadow>
+          <block type="text_join" id="sw3)Sx.q`sP:6$lXBL{y">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="text" id="FI4~_!/ul3o~(kl_%NxM">
+                <field name="TEXT">ELEMENT #3 - Open Contract</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="HXeTXzB4+(LD0fkcpzNS">
+                <field name="TEXT"> - </field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="text_join" id="vV4}Y}bi]r+SRpl=O-b;" inline="true">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="d[,@~iAnmln:zQi5NC|d">
+                    <field name="TEXT">tempProfit(</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="sell_price" id=",bLTl)_4p@x{Dg@z;j}d"></block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="@V+(JFoy?Fs:TxuOLDY.">
+                    <field name="TEXT">)</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" x="0" y="1325">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="notify" id="-SDkrz4}`DCIn8fD%WHo">
+        <field name="NOTIFICATION_TYPE">error</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id="|MFf_~_UvUO~P|F[]HK*">
+            <field name="TEXT">ELEMENT #4</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="smartrisk_result" id="=Y^^B$(*~%y^pEWz{TKd">
+            <field name="SMARTRISK_VAR" id=":56BJ}+:JJfe^A0u,56E" variabletype="">smartRisk</field>
+            <value name="SMARTRISKFIELD_TOLERANCE">
+              <shadow type="math_number" id="ncCl5}K$?tUuCh[pq~zA">
+                <field name="NUM">0.1</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="controls_if" id="h9vd~!k1/f8[{%w;CJMq">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="contract_check_result" id="g9oF^K4/ps`?YWj)dw4k">
+                    <field name="CHECK_RESULT">win</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="tfL[QPnDV@QEcm![g-=m">
+                    <field name="VAR" id="~[*J}fvhI6pf4YrR*yE{" variabletype="">tradeDisabled</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="Xga/Y,+@L!T#x,zqaAX~">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="variables_set" id="}JVI$[vb;_0zXhSx^%DH">
+                    <field name="VAR" id="~[*J}fvhI6pf4YrR*yE{" variabletype="">tradeDisabled</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="d5z*M[wrzXeM66.5|QZ*">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="zR_|pFnCHS4Up}]N934S">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="smartrisk_query" id="[[erSBRWOH6vJRg8vpGB">
+                        <field name="SMARTRISK_LIST">continueTrade</field>
+                        <field name="SMARTRISK_VAR" id=":56BJ}+:JJfe^A0u,56E" variabletype="">smartRisk</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="text_print" id="1,=}#7}E.o:2}0=+4eKa">
+                        <value name="TEXT">
+                          <shadow type="text" id="x%sXq%*Gn^l3vt189*Ow">
+                            <field name="TEXT">Bot Stopped</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
