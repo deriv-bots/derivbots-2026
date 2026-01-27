@@ -1,0 +1,236 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id="B1QULQFHhsY:UDFFic@Y">Target Profit</variable>
+    <variable type="" id="GYiy?v@WnvT%BAgL0J7S">Compound Stake</variable>
+    <variable type="" id="hI@Y}s|lTxY^B?|ePQo3">Max Loss</variable>
+  </variables>
+  <block type="trade" id="73vWdDagX-YhN)CtN.3D" x="0" y="0">
+    <field name="MARKET_LIST">synthetic_index</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">digits</field>
+    <field name="TRADETYPE_LIST">overunder</field>
+    <field name="TYPE_LIST">DIGITUNDER</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="text_print" id="8DkZ4WLssSI3SuptJFzX" collapsed="true">
+        <value name="TEXT">
+          <shadow type="text" id="xOx?1HjO[9-N/2MMvx*F">
+            <field name="TEXT">Compound Stake  by BINARYTOOL.SITE Join our telegram for more bots @ https://t.me/binarytools</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="variables_set" id="D!qv#iHJ:ZOTG!8SBOM_">
+            <field name="VAR" id="B1QULQFHhsY:UDFFic@Y" variabletype="">Target Profit</field>
+            <value name="VALUE">
+              <block type="math_number" id="v;/qX-WI9G.g+.N^7ntq">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="@%fc)+|l*+9`u#[d{=]x">
+                <field name="VAR" id="GYiy?v@WnvT%BAgL0J7S" variabletype="">Compound Stake</field>
+                <value name="VALUE">
+                  <block type="math_number" id="2%I5[QMh|XxR3$F?kybR">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="IEra)5~tI=N9mCmxLi(X">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="BARRIEROFFSETTYPE_LIST">+</field>
+        <field name="SECONDBARRIEROFFSETTYPE_LIST">-</field>
+        <value name="DURATION">
+          <block type="math_random_int" id="G2A!fp]1_DfPuXkf-!.?" collapsed="true">
+            <value name="FROM">
+              <shadow type="math_number" id="HYFh^1=Qg@_raI8$QlaL">
+                <field name="NUM">3</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number" id="ozp?Ef#DGZ7SYPX$U$;8">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <value name="AMOUNT">
+          <block type="variables_get" id="1|0b~nTFQhQ~H,cG!):6">
+            <field name="VAR" id="GYiy?v@WnvT%BAgL0J7S" variabletype="">Compound Stake</field>
+          </block>
+        </value>
+        <value name="PREDICTION">
+          <block type="math_number" id="3P^?YB2digtwP?$OukQW">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="Vt,CkLeK8E?%BmnB`~M)" collapsed="true" x="0" y="505">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="=-Bp83rRV6Aepj{UYO%,">
+        <value name="IF0">
+          <block type="contract_check_result" id="UoQr:ZmRrF3QBF)d2p~Q">
+            <field name="CHECK_RESULT">win</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="bt_notify" id="IcCe6^?T38m$?kj:LGFq">
+            <field name="color_schemes">info</field>
+            <field name="sound">silent</field>
+            <value name="notification">
+              <block type="text_join" id="ZTCp!:3xv2HK}@7R+/(c">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="a.,y.Ob60!Qn]bu|X3G9">
+                    <field name="TEXT">Won:::</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="read_details" id="$B6w{cX~1kj.(P*j@@sm">
+                    <field name="DETAIL_INDEX">4</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id=":C#qN7j}J@z07LQc@SE5">
+                <field name="VAR" id="GYiy?v@WnvT%BAgL0J7S" variabletype="">Compound Stake</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="UT{:y`Fo@AG^*N]b-[Nj">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <shadow type="math_number" id="d+*tr[Oqp#QR1IG8W?2I">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="|tdh;}5@3NOPOQzxgfP@">
+                        <field name="VAR" id="GYiy?v@WnvT%BAgL0J7S" variabletype="">Compound Stake</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id="d14=Cs4QH8jH~56Q3wg|">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="read_details" id="v!sPPrDiU%9}zqZYAU-%">
+                        <field name="DETAIL_INDEX">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id=",HYwR=1Uiu:!xo//qd*!">
+            <mutation elseif="1" else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="V;?uB[xUg8!3^6[rx[!6">
+                <field name="OP">LTE</field>
+                <value name="A">
+                  <block type="total_profit" id="oI`]a574AEFKB1|}l?RH"></block>
+                </value>
+                <value name="B">
+                  <block type="math_single" id="b?`~AI?6ioPJq6%0giFt">
+                    <field name="OP">NEG</field>
+                    <value name="NUM">
+                      <shadow type="math_number" id="O@B1%i7S!RqW5,F0M@y:">
+                        <field name="NUM">9</field>
+                      </shadow>
+                      <block type="variables_get" id="wjVl4HQw2X6+/U9C8A^4">
+                        <field name="VAR" id="hI@Y}s|lTxY^B?|ePQo3" variabletype="">Max Loss</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="text_print" id="E4jb?hFa$2n7)7{|s8(X">
+                <value name="TEXT">
+                  <shadow type="text" id="kqlrIk.GO.^}hI,PoUV)">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text_join" id="lmdzPoN1|6QHqJ6^(!gL">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="|Q++$7];Wiwcao?PbeqA">
+                        <field name="TEXT">🔴Heads up! You've reached the Loss Limit. Pause Trading</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="total_profit" id="A~hA|!1:OFV`@o|!WY]W"></block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="h4_qx(`hcSeKAQyE}Ely">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="total_profit" id="gMWTWrBmPsz=24b_eTSQ"></block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="~jiEDr}74IA]9EaPPdjL">
+                    <field name="VAR" id="B1QULQFHhsY:UDFFic@Y" variabletype="">Target Profit</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="text_print" id="q*0UqQ.0{*0`@^GU5hjc">
+                <value name="TEXT">
+                  <shadow type="text" id="kqlrIk.GO.^}hI,PoUV)">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text_join" id="j{4bv*ZIJDu:Qv;{X0u8">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id=":De|2=QM0mloecnTHkV8">
+                        <field name="TEXT">🟢Congratulations! Target Profit Achieved! Get More free automated bots. https://t.me/binarytools</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="total_profit" id="2$kUu#8_wNCF3g-,wT2%"></block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="trade_again" id="|90W0;8rH2^dX/Otf;G{"></block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="tOc)]Xd=cAm0aiy+-8(8" x="0" y="558">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="bt_notify" id="[bWt+XNYrpCJ4r|Eu`f)" collapsed="true">
+        <field name="color_schemes">info</field>
+        <field name="sound">silent</field>
+        <value name="notification">
+          <block type="text" id="u-8O9k`BgY]xt%)CI^i3" collapsed="true">
+            <field name="TEXT">block.binarytool.site</field>
+          </block>
+        </value>
+        <next>
+          <block type="purchase" id=",o^p,fZ|mEk)r9|QbjS_">
+            <field name="PURCHASE_LIST">DIGITUNDER</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

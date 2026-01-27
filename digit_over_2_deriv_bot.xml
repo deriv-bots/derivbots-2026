@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="trade" deletable="false" movable="false" x="20" y="20">
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPE">DIGITOVER</field>
+    <field name="BARRIER_OFFSET">2</field>
+    <field name="DURATIONTYPE">t</field>
+    <field name="DURATION">1</field>
+    <field name="CURRENCY">USD</field>
+    <field name="AMOUNT">1</field>
+    <next>
+      <block type="before_purchase">
+        <statement name="BEFOREPURCHASE">
+          <block type="logic_if">
+            <value name="IF0">
+              <block type="logic_compare">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="lists_length">
+                    <value name="VALUE">
+                      <block type="get_digits_list"/>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="logic_if">
+                <value name="IF0">
+                  <block type="logic_operation">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="math_number_property">
+                        <mutation divisor_input="false"/>
+                        <field name="PROPERTY">LT</field>
+                        <value name="NUMBER_TO_CHECK">
+                          <block type="get_digit">
+                            <field name="INDEX">1</field>
+                          </block>
+                        </value>
+                        <value name="NUMBER">
+                          <block type="math_number">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_operation">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="math_number_property">
+                            <mutation divisor_input="false"/>
+                            <field name="PROPERTY">LT</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <block type="get_digit">
+                                <field name="INDEX">2</field>
+                              </block>
+                            </value>
+                            <value name="NUMBER">
+                              <block type="math_number">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number_property">
+                            <mutation divisor_input="false"/>
+                            <field name="PROPERTY">LT</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <block type="get_digit">
+                                <field name="INDEX">3</field>
+                              </block>
+                            </value>
+                            <value name="NUMBER">
+                              <block type="math_number">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="purchase"/>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="after_purchase">
+            <statement name="AFTERPURCHASE">
+              <block type="balance">
+                <next>
+                  <block type="set_payout"/>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="on_finish">
+                <statement name="ONFINISH">
+                  <block type="strategy">
+                    <field name="LOSS_MULTIPLIER">10</field>
+                    <field name="COMPOUND_PROFIT">TRUE</field>
+                    <field name="COMPOUND_TIMES">3</field>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

@@ -1,0 +1,524 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id="rH/*s$liJgi2D]-AE`gZ">evenDigits</variable>
+    <variable type="" id="?iUdz6,W{Fq[OS@c2Dg:">lastDigit</variable>
+    <variable type="" id="(3+h:h3gZc^%Mz+y4u4b">smartRisk</variable>
+    <variable type="" id="7fp@jzd1py5[pcSWR94x">oddDigits</variable>
+    <variable type="" id="U9cVe])pATNKZwf1Uap5">counter</variable>
+    <variable type="" id="J=K^QWgd^j=x*.b?%[z)">signal</variable>
+  </variables>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">synthetic_index</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_50</field>
+    <field name="TRADETYPECAT_LIST">digits</field>
+    <field name="TRADETYPE_LIST">evenodd</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="eI[Pu[irB=(mb8uhyOgt">
+        <field name="VAR" id="(3+h:h3gZc^%Mz+y4u4b" variabletype="">smartRisk</field>
+        <value name="VALUE">
+          <block type="smartrisk_settings" id="f#+:FM/;ERQf,c/kIOSs">
+            <value name="STRATEGY">
+              <shadow type="text" id="xlit$x7RI-FxjR4KY[rv">
+                <field name="TEXT">smart</field>
+              </shadow>
+            </value>
+            <value name="INVESTMENT">
+              <shadow type="math_number" id="h#VcYovkW5?U(lP[@``d">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TAKE_PROFIT">
+              <shadow type="math_number" id="WVnBIOgPO~^:x::6}oa@">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+            <value name="STOP_LOSS">
+              <shadow type="math_number" id="#@74.gg48odHWOeIe.W+">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+            <value name="PARAMETERS">
+              <shadow type="lists_create_with" id="IC*CK@+ywM!q--f+S`=4">
+                <mutation items="0"></mutation>
+              </shadow>
+              <block type="lists_create_with" id="zgcXpO)w{3qxc4?y0Y`L" collapsed="true">
+                <mutation items="1"></mutation>
+                <value name="ADD0">
+                  <block type="math_number" id="5aB#+-/X79L~~H7YWF|0">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="7{cz1g]AZZJU4^v:y+tt">
+            <field name="VAR" id="U9cVe])pATNKZwf1Uap5" variabletype="">counter</field>
+            <value name="VALUE">
+              <block type="math_number" id="ubqD)?C=(y!$WlI;];#8">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="3J|{]^8E|HyTa{jb+pei">
+                <mutation name="reset"></mutation>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <field name="BARRIEROFFSETTYPE_LIST">+</field>
+        <field name="SECONDBARRIEROFFSETTYPE_LIST">-</field>
+        <value name="DURATION">
+          <shadow type="math_number" id="~v:-/%[t?;r6SwO`mzvk">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="smartrisk_query" id="%MdVZeDBx*a#*V(g1)xP" collapsed="true">
+            <field name="SMARTRISK_LIST">stake</field>
+            <field name="SMARTRISK_VAR" id="(3+h:h3gZc^%Mz+y4u4b" variabletype="">smartRisk</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" collapsed="true" x="0" y="610">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="notify" id=";cx/GLzj=6k+W:`{QgQS" collapsed="true">
+        <field name="NOTIFICATION_TYPE">warn</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id="Fx7cIn(+KOU0xxVh*jIT">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="text_join" id="N+mn,?C8}9Wjyts}8D-N" inline="true">
+            <mutation items="2"></mutation>
+            <value name="ADD0">
+              <block type="text" id="C$8=*Tztn%Z1U1H$N)3b">
+                <field name="TEXT">Digits: </field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="lists_getSublist" id="83yo=|8djwT%tB6KpgIj">
+                <mutation at1="true" at2="true"></mutation>
+                <field name="WHERE1">FROM_END</field>
+                <field name="WHERE2">FROM_END</field>
+                <value name="LIST">
+                  <block type="lastDigitList" id="HXw#(.p^{(@,I_DTvQ;]"></block>
+                </value>
+                <value name="AT1">
+                  <block type="math_number" id="IJ9A?M6@Zd|,l:oxnH~P">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+                <value name="AT2">
+                  <block type="math_number" id="UA7m(]fg7Y~}L@(KH}C;">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="notify" id=",Hi55xKLZJNJ:sGelGnY" collapsed="true">
+            <field name="NOTIFICATION_TYPE">info</field>
+            <field name="NOTIFICATION_SOUND">silent</field>
+            <value name="MESSAGE">
+              <shadow type="text" id="#}.7h634KfEnZeo|@vUd">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="text_join" id="}n)#R:iMKA2l=VRrn`v*" inline="true">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="text_join" id=",lu`nbw.6`/F~dkZr%/C" inline="true">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="p~Of@vS|D*kVRnnFx8wk">
+                        <field name="TEXT">Even: </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="{}*~pI-sWOaYeuVW=rw}">
+                        <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id=":P{#qd!QStz9D}/YAp`l">
+                    <field name="TEXT"> || </field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text_join" id="a8nX_IT5PsJ/Vn./Efse" inline="true">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="n!M=:V_;eH)@H~Dy_yvB">
+                        <field name="TEXT">Odd: </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="$Cr#TGY;k~G^5!wvSL`=">
+                        <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="2G@e$%iLC.xGG#oGJ^$`">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="S*o)Q`Uhd5@|u:l2R51=">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="qAXn.zE)$A[ZRndEU3@T">
+                        <field name="VAR" id="J=K^QWgd^j=x*.b?%[z)" variabletype="">signal</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="Gli)abps`_xt!Rt=H8p6">
+                        <field name="TEXT">even</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="smartrisk_prepare" id="ScP3i+q%Qn)(VJ2,D;Z4" collapsed="true">
+                    <field name="SMARTRISKFIELD_LIST">DIGITODD</field>
+                    <field name="SMARTRISK_VAR" id="(3+h:h3gZc^%Mz+y4u4b" variabletype="">smartRisk</field>
+                    <next>
+                      <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+                        <field name="PURCHASE_LIST">DIGITODD</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="=oxtAU:taWCISPct)xF6" collapsed="true">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="ziZ!by6YQMMGC[cFO[Y6" collapsed="true">
+                        <field name="VAR" id="J=K^QWgd^j=x*.b?%[z)" variabletype="">signal</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="4I36CErb7^{$OXG.YTPr">
+                        <field name="TEXT">odd</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="smartrisk_prepare" id="U)g%Ba+XlZc{~f?u3G;u" collapsed="true">
+                    <field name="SMARTRISKFIELD_LIST">DIGITEVEN</field>
+                    <field name="SMARTRISK_VAR" id="(3+h:h3gZc^%Mz+y4u4b" variabletype="">smartRisk</field>
+                    <next>
+                      <block type="purchase" id="4bRiKh2j_ms*e354Q(!R">
+                        <field name="PURCHASE_LIST">DIGITEVEN</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" collapsed="true" x="0" y="663">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="smartrisk_result" id="ag)M3/`8)VwYCYN$2?{h">
+        <field name="SMARTRISK_VAR" id="(3+h:h3gZc^%Mz+y4u4b" variabletype="">smartRisk</field>
+        <value name="SMARTRISKFIELD_TOLERANCE">
+          <shadow type="math_number" id="6?5s).TsMK~7Fcgf[[|w">
+            <field name="NUM">0.1</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="controls_if" id="7dTE+MW#BV8moM}4+^)~" collapsed="true">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="contract_check_result" id="d:gUERz^=.wr}M./mphO">
+                <field name="CHECK_RESULT">win</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="procedures_callnoreturn" id="7!Hb=-f[PQwl=c:F$v)Q">
+                <mutation name="reset"></mutation>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set" id="_{d2jU3HNH9_Te4;:EP3" collapsed="true">
+                <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+                <value name="VALUE">
+                  <block type="math_number" id="ah%usBKvG-a4FNQc:VK,">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="!^bsHeN3My9OPm|WIOD2" collapsed="true">
+                    <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="oRA95rp^tP1}gI1r/!@E">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="ONKYo?eTzh^_o@Q:u`gM">
+                <value name="IF0">
+                  <block type="smartrisk_query" id="`:]BHm9R9Tp%Y.P8IG6!">
+                    <field name="SMARTRISK_LIST">continueTrade</field>
+                    <field name="SMARTRISK_VAR" id="(3+h:h3gZc^%Mz+y4u4b" variabletype="">smartRisk</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="lGst-nJ{pV-_4NRtrdPA" collapsed="true" x="0" y="716">
+    <field name="NAME">registerOdd</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="@1A[z|ofQ^/aVwH$50q#">
+        <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+        <value name="VALUE">
+          <block type="math_number" id="WoIpnF9|{vhAju%o?w[n">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="1PhEgMkyUSGXwP0b7c5T">
+            <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="$IVZPo%8Uk@8k7%CYBe(">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <shadow type="math_number" id="]:HpBanp;@Z{H+yp{@Vl">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id="}AjQoEacuLNawxkd{bI!">
+                    <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="rw~IFR,=s?#(Ky1#u%jo">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="nU$^XeRj=c%sQ6|WD@DC" collapsed="true" x="0" y="769">
+    <field name="NAME">reset</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="mZ=OTUPa817O-w#bmguj" collapsed="true">
+        <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+        <value name="VALUE">
+          <block type="math_number" id="T)Z5.FS2kkc%zO}(-t=T">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="i9AVAl7Y6}IW/ph`=t:{" collapsed="true">
+            <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+            <value name="VALUE">
+              <block type="math_number" id=".tH/!f,ND~C3Qv3C-4vi">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="#?Jp~/qanjIw6X@evLK%" collapsed="true">
+                <field name="VAR" id="J=K^QWgd^j=x*.b?%[z)" variabletype="">signal</field>
+                <value name="VALUE">
+                  <block type="logic_null" id="O5roaa+63;z)(PU%`W.7"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="%y`i9#WsDq}xq80u[|Fo" collapsed="true" x="0" y="822">
+    <field name="NAME">registerEven</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="I3~)T(..l!$y@~{Twctf">
+        <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="d2,KnYPU8-K(LTlFCIuI">
+            <field name="OP">ADD</field>
+            <value name="A">
+              <shadow type="math_number" id="]:HpBanp;@Z{H+yp{@Vl">
+                <field name="NUM">1</field>
+              </shadow>
+              <block type="variables_get" id="=7`_LaF#.F$2hmnkL|SC">
+                <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="3kp1U:)lx18p:%?QYSvb">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="kIO|BSRyDW421.Jh9EPD">
+            <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+            <value name="VALUE">
+              <block type="math_number" id="8XP+K]/ai!ly4kecSx1N">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="tick_analysis" id=".]k;~adgrrUAT}i[#0b/" collapsed="true" x="0" y="875">
+    <statement name="TICKANALYSIS_STACK">
+      <block type="variables_set" id="h,{da9IJuXotUdqp*NO.">
+        <field name="VAR" id="?iUdz6,W{Fq[OS@c2Dg:" variabletype="">lastDigit</field>
+        <value name="VALUE">
+          <block type="last_digit" id="1y!+FC^s?ew,CEv7r)g%"></block>
+        </value>
+        <next>
+          <block type="controls_if" id="R4#AI![i1#}$br`OR/.8">
+            <mutation elseif="1"></mutation>
+            <value name="IF0">
+              <block type="math_number_property" id="PwIN.=vz5Gt6#AWtk[-(" collapsed="true">
+                <mutation divisor_input="false"></mutation>
+                <field name="PROPERTY">EVEN</field>
+                <value name="NUMBER_TO_CHECK">
+                  <shadow type="math_number" id="ChcLGMV:hX(i%OWZ5V98">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="variables_get" id=";1CiprC@z84ntP4w/Uwj">
+                    <field name="VAR" id="?iUdz6,W{Fq[OS@c2Dg:" variabletype="">lastDigit</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="procedures_callnoreturn" id="UUF1a*HITKkV-ajO{cxH" collapsed="true">
+                <mutation name="registerEven"></mutation>
+                <next>
+                  <block type="controls_if" id=";kJc#ZRWaL0lcEalG@YL">
+                    <value name="IF0">
+                      <block type="logic_compare" id="-84@+er^_(NGc$HcY6Wx">
+                        <field name="OP">GTE</field>
+                        <value name="A">
+                          <block type="variables_get" id="9#1!ca%cD7qLpHmRm~)+">
+                            <field name="VAR" id="rH/*s$liJgi2D]-AE`gZ" variabletype="">evenDigits</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="c+3$H=2[xbnuc,MxcJdb">
+                            <field name="VAR" id="U9cVe])pATNKZwf1Uap5" variabletype="">counter</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="@rAB?!a47]SEV^[p~CyD">
+                        <field name="VAR" id="J=K^QWgd^j=x*.b?%[z)" variabletype="">signal</field>
+                        <value name="VALUE">
+                          <block type="text" id="J3,p+d`nUs?!%LRotvUl">
+                            <field name="TEXT">even</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="math_number_property" id="kHHsLDrNplqD;*H~A[qN" collapsed="true">
+                <mutation divisor_input="false"></mutation>
+                <field name="PROPERTY">ODD</field>
+                <value name="NUMBER_TO_CHECK">
+                  <shadow type="math_number" id="ChcLGMV:hX(i%OWZ5V98">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="variables_get" id="mh0U(^oj1y*3!9_qg:L,">
+                    <field name="VAR" id="?iUdz6,W{Fq[OS@c2Dg:" variabletype="">lastDigit</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="controls_if" id=".Q8K,2P[bO9q@a;[((@V">
+                <value name="IF0">
+                  <block type="logic_compare" id="$`W~VYqTZJ_|g=E%Tw=,">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="variables_get" id=".S(a341}iGy_%JB{D`tA">
+                        <field name="VAR" id="7fp@jzd1py5[pcSWR94x" variabletype="">oddDigits</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="5@P%|#`JDQ1C0:];9jcQ">
+                        <field name="VAR" id="U9cVe])pATNKZwf1Uap5" variabletype="">counter</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="OHi(aE/Fnb!QY^!NrnLH">
+                    <field name="VAR" id="J=K^QWgd^j=x*.b?%[z)" variabletype="">signal</field>
+                    <value name="VALUE">
+                      <block type="text" id="h%lk^lcmgZr6{k`5;I,E">
+                        <field name="TEXT">odd</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="procedures_callnoreturn" id="Q%XYTex.bd$qA7ja$@6j" collapsed="true">
+                    <mutation name="registerOdd"></mutation>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
