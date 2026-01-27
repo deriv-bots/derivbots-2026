@@ -1,0 +1,115 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" is_dbot="true" collection="false">
+  <variables>
+    <variable type="" id="Y3HADG;ry5!63syqOuj_" islocal="false" iscloud="false">Stake</variable>
+  </variables>
+  <block type="trade_definition" id="],$4%adE6|FCRPyCK`VV" deletable="false" movable="false" x="0" y="0">
+    <statement name="TRADE_OPTIONS">
+      <block type="trade_definition_market" id="xhi8adiyl?X6(Qya@IUb" deletable="false" movable="false">
+        <field name="MARKET_LIST">synthetic_index</field>
+        <field name="SUBMARKET_LIST">random_index</field>
+        <field name="SYMBOL_LIST">R_10</field>
+        <next>
+          <block type="trade_definition_tradetype" id="Mv!Qe%5WZ_P6nIA/r6ow" deletable="false" movable="false">
+            <field name="TRADETYPECAT_LIST">callput</field>
+            <field name="TRADETYPE_LIST">callput</field>
+            <next>
+              <block type="trade_definition_contracttype" id=".2~o@GOrSVNyk110P|sJ" deletable="false" movable="false">
+                <field name="TYPE_LIST">both</field>
+                <next>
+                  <block type="trade_definition_candleinterval" id="bG-EL_pmjQ]@kC-gF{l]" deletable="false" movable="false">
+                    <field name="CANDLEINTERVAL_LIST">60</field>
+                    <next>
+                      <block type="trade_definition_restartbuysell" id="C=8y~~Em__C9Thy:Q~Md" deletable="false" movable="false">
+                        <field name="TIME_MACHINE_ENABLED">FALSE</field>
+                        <next>
+                          <block type="trade_definition_restartonerror" id="[fC+KI2da._pQ^,z1?uK" deletable="false" movable="false">
+                            <field name="RESTARTONERROR">TRUE</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="INITIALIZATION">
+      <block type="text_print" id="Zm0lMJKz,-K5|mE(mb4d">
+        <value name="TEXT">
+          <shadow type="text" id="V{$qM/PxhoF/dL_kU{l(">
+            <field name="TEXT">This bot has been transferred to www.binogator.live. The strategy was implemented into the RF Squid bot, with improved features. Please visit the website to use the bot for free.   -- Don't hesitate to reach our telegram support agent: t.me/devlopero whenever you need any assistance. Follow us on Telegram: t.me/binogator. Follow us on YouTube: youtube.com/@binogator. -- Thank you, and Happy Trading! 👍</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="trade_definition_tradeoptions" id="HX5vvGc?bV~E!6?jBAoh">
+        <mutation has_first_barrier="false" has_second_barrier="false" has_prediction="false"></mutation>
+        <field name="DURATIONTYPE_LIST">t</field>
+        <value name="DURATION">
+          <shadow type="math_number_positive" id="8LufFc(mCHP]{uicLqQ$">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number_positive" id=",4Eeg~hP{RL4W5~sP.(J">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="f}lFdq-Mt8R16QZvN|2O" deletable="false" movable="false" x="691" y="0">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="ixKh3IEB;_M$B/9,5ydR" collapsed="true">
+        <value name="IF0">
+          <block type="logic_compare" id="jrY(Tf~.isK|PXt7~aWW">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="math_number" id="#rRRwx2*uAX^ogLO]jB4">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="zcw4/uLYZq$m?YEuo8W-">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="trade_again" id="L},[(2#FG806~j%Skzk2"></block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="zO?rzt#fglM,~RGr:jUM" deletable="false" movable="false" x="0" y="600">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="xNw7/w|acr)t(S+x?)LG" collapsed="true">
+        <value name="IF0">
+          <block type="logic_compare" id="3Q9O/F(2aHQOy$`gJZXA">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="math_number" id="UONQv**@aQq-8|=$`X!^">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="tTZp9AWVepyQBrv6L|,X">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="purchase" id="fRcv,Nm@)Or:O7N}@ftB">
+            <field name="PURCHASE_LIST">CALL</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
