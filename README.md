@@ -1,7 +1,7 @@
 <h1 align="center">🚀 2026 Deriv Bots XML Collection 📄</h1>
 
 <p align="center">
-Accurated set of XML bots for <a href="https://dbot.deriv.com">dbot.deriv.com</a>  optimized for performance, precision, and profit.
+Accurated set of XML bots for <a href="https://track.deriv.com/_tyV1h4aN9QKFfUyb_9NCN2Nd7ZgqdRLk/1/">dbot.deriv.com</a>  optimized for performance, precision, and profit.
 </p>
 
 ---
@@ -21,11 +21,11 @@ They’re built for traders who want high win rates with controlled risk. Martin
 
 ## 🧠 How to Get Started
 
-1. Visit [dbot.deriv.com](https://dbot.deriv.com)  
-2. Upload any `.xml` bot file from this repo  
-3. Run the bot  
-4. Monitor performance and adjust as needed  
-5. 💰 Profit (responsibly)
+1. Visit [dbot.deriv.com](https://track.deriv.com/_tyV1h4aN9QKFfUyb_9NCN2Nd7ZgqdRLk/1/)  
+3. Upload any `.xml` bot file from this repo  
+4. Run the bot  
+5. Monitor performance and adjust as needed  
+6. 💰 Profit (responsibly)
 
 ---
 
@@ -72,7 +72,7 @@ There are over 40+ premium bots and strategies available  plus lifetime access t
 Step into a private trading community built for precision, profit, and elite strategy sharing.
 
 **𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌:** [https://t.me/Deriv Pro_Bots](https://t.me/Deriv_Pro_Bots)  
-**𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏:** [https://chat.whatsapp.com/Fgh6GRJbmWV3MdCnnsFr38](https://chat.whatsapp.com/Fgh6GRJbmWV3MdCnnsFr38)
+**𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏:** [https://chat.whatsapp.com/GiuNH6QDVFrD7mfl8NQ7yk](https://chat.whatsapp.com/GiuNH6QDVFrD7mfl8NQ7yk)
 
 > Access premium bots, live strategy drops, and mentorship from top-tier traders.  
 > This isn’t just a group, it’s your edge.
